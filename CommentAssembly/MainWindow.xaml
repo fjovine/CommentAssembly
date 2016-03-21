@@ -1,0 +1,23 @@
+﻿<Window x:Class="CommentAssembly.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommentAssembly"
+        mc:Ignorable="d"
+        Height="350" Width="525" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBox 
+            Grid.Row="0" Grid.Column="0"
+            
+            x:Name="Comment" Margin="3,3,3,0" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" AcceptsReturn="True"/>
+        <TextBox
+            Grid.Row="1" Grid.Column="0"
+            x:Name="History" Margin="3,3,3,3" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+            IsEnabled="False"/>
+    </Grid>
+</Window>
