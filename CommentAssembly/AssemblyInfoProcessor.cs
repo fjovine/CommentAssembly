@@ -1,20 +1,58 @@
-﻿namespace CommentAssembly
+﻿//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfoProcessor.cs" company="hiLab">
+//     Copyright (c) Francesco Iovine.
+// </copyright>
+// <author>Francesco Iovine iovinemeccanica@gmail.com</author>
+//-----------------------------------------------------------------------
+namespace CommentAssembly
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Windows;
 
-    public class AssemblyInfo
+    /// <summary>
+    /// Processes and decodes an <c>AssemblyInfo.cs</c> loading the information needed by the application, namely the
+    /// version and a list of the most recent commends and compilation time stamps.
+    /// </summary>
+    public class AssemblyInfoProcessor
     {
+        /// <summary>
+        /// Beginning of the line containing the File version in the <c>AssemblyInfo.cs</c> file.
+        /// </summary>
         private static readonly string AssemblyFileVersionSignature = "[assembly: AssemblyFileVersion(";
+
+        /// <summary>
+        /// File name of the <c>AssemblyInfo.cs</c> file
+        /// </summary>
         private static readonly string AssemblyInfoName = "AssemblyInfo.cs";
+
+        /// <summary>
+        /// Beginning of the line containing the Assembly version in the <c>AssemblyInfo.cs</c> file.
+        /// </summary>
         private static readonly string AssemblyVersionSignature = "[assembly: AssemblyVersion(";
-        private static readonly int MaxComments = 10;
+
+        /// <summary>
+        /// Number of lines containing the latest compilation comments to be loaded from <c>AssemblyInfo.cs</c>
+        /// file.
+        /// </summary>
+        private static readonly int MaxComments = 50;
+
+        /// <summary>
+        /// Name of the folder containing the <c>AssemblyInfo.cs</c> file.
+        /// </summary>
         private static readonly string Properties = "Properties";
+
+        /// <summary>
+        /// Backup field of the LastComments property.
+        /// </summary>
         private List<string> lastComments = new List<string>();
 
-        public AssemblyInfo(TextReader reader)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AssemblyInfoProcessor" /> class.<para/>
+        /// </summary>
+        /// <param name="reader">TextReader of the <c>AssemblyInfo.cs</c> formatted file.</param>
+        public AssemblyInfoProcessor(TextReader reader)
         {
             using (reader)
             {
@@ -79,12 +117,27 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the version contained in the file.
+        /// </summary>
         public AssemblyVersion CurrentVersion
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets the name of the project containing this AssemblyInfo;
+        /// </summary>
+        public string ProjectName
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets an enumeration of the most recent comment lines inside the <c>AssemblyInfo</c> file.
+        /// </summary>
         public IEnumerable<string> LastComments
         {
             get
@@ -96,20 +149,23 @@
         /// <summary>
         /// Factory method that creates an AssemblyInfo object with the information loaded from the passed file.
         /// </summary>
-        /// <param name="projectFolder">Folder containing the solution project .sln</param>
+        /// <param name="projectFolder">Folder containing the solution project <c>.sln</c></param>
         /// <returns>An AssemblyInfo object with the loaded information.</returns>
-        public static AssemblyInfo LoadAssemblyInfo(string projectFolder)
+        public static AssemblyInfoProcessor LoadAssemblyInfo(string projectFolder)
         {
             string filePath = Path.Combine(projectFolder, Properties, AssemblyInfoName);
 
-            AssemblyInfo result = null;
+            AssemblyInfoProcessor result = null;
 
             if (File.Exists(filePath))
             {
                 using (StreamReader reader = new StreamReader(filePath))
                 {
-                    result = new AssemblyInfo(reader);
+                    result = new AssemblyInfoProcessor(reader);
                 }
+
+                string[] parsedPath = Path.GetFullPath(filePath).Split(Path.DirectorySeparatorChar);
+                result.ProjectName = parsedPath[parsedPath.Length - 3];
             }
 
             return result;
@@ -119,7 +175,7 @@
         /// Updates the assembly info file with the new information passed, i.e. a new version number
         /// and a new comment.
         /// </summary>
-        /// <param name="projectFolder">Pathname of the folder containing the project .sln file</param>
+        /// <param name="projectFolder">Pathname of the folder containing the project <c>.sln</c> file</param>
         /// <param name="version">Version to be inserted in the file.</param>
         /// <param name="comment">Comment about the current compilation.</param>
         public static void UpdateAssemblyInfo(string projectFolder, AssemblyVersion version, string comment)

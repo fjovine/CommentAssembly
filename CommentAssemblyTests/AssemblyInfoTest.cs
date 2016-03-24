@@ -15,7 +15,7 @@ namespace CommentAssemblyTests
             AssemblyVersion expected = new AssemblyVersion(expectedVersion);
 
             TextReader reader = new StringReader(assemblyFile);
-            AssemblyInfo assemblyInfo = new AssemblyInfo(reader);
+            AssemblyInfoProcessor assemblyInfo = new AssemblyInfoProcessor(reader);
 
             Assert.AreEqual(expected.Major , assemblyInfo.CurrentVersion.Major);
             Assert.AreEqual(expected.Minor, assemblyInfo.CurrentVersion.Minor);
@@ -29,7 +29,7 @@ namespace CommentAssemblyTests
         public void Assemblyinfo_CorrectlyLoads_TheLastCommensts(string[] expected, string assemblyFile)
         {
             TextReader reader = new StringReader(assemblyFile);
-            AssemblyInfo assemblyInfo = new AssemblyInfo(reader);
+            AssemblyInfoProcessor assemblyInfo = new AssemblyInfoProcessor(reader);
 
             Assert.AreEqual(expected, assemblyInfo.LastComments);
         }
@@ -39,7 +39,7 @@ namespace CommentAssemblyTests
         {
             TextReader reader = new StringReader("// [assembly: AssemblyVersion(\"0.1.* \")]\n[assembly: AssemblyFileVersion(\"0.1.0.941\")]\nComment1\nComment2");
 
-            Exception exception = Assert.Catch(() => new AssemblyInfo(reader));
+            Exception exception = Assert.Catch(() => new AssemblyInfoProcessor(reader));
             StringAssert.Contains("not contain", exception.Message);
         }
 
@@ -48,7 +48,7 @@ namespace CommentAssemblyTests
         {
             TextReader reader = new StringReader("// [assembly: AssemblyVersion(\"0.1.* \")]\n[assembly: AssemblyVersion(\"0.1.0.941\")]\n[assembly: AssemblyFileVersion(\"0.1.0.941\")]\nComment1\nComment2\n[assembly: AssemblyVersion(\"0.1.0.941\")]\n");
 
-            Exception exception = Assert.Catch(() => new AssemblyInfo(reader));
+            Exception exception = Assert.Catch(() => new AssemblyInfoProcessor(reader));
             StringAssert.Contains("more than one", exception.Message);
         }
     }

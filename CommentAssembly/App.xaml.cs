@@ -1,18 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="App.xaml.cs" company="hiLab">
+//     Copyright (c) Francesco Iovine.
+// </copyright>
+// <author>Francesco Iovine iovinemeccanica@gmail.com</author>
+//-----------------------------------------------------------------------
 namespace CommentAssembly
 {
+    using System;
+    using System.Windows;
+
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Interaction logic for <c>App.xaml</c>
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Handler that manages the application startup event. It checks the presence of the project
+        /// path as the only command line parameter. If this is not the case, a message box is shown.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             if (Environment.GetCommandLineArgs().Length != 2)
