@@ -1,29 +1,33 @@
-**CommentAssembly**
+CommentAssembly
+===============
 
-**The problem**
+The problem
+-----------
 
 If you develop software alone, keeping track of which version your customers use is extremely important. 
 Specifically when your deliverables are composed by many executables and/or deployed on many cooperating computers. 
 
 When the development is in real time and you spend your day releasing many executables to chase a bug and you need to deploy the same application on 
-many computers, track the versions can be difficult. In fact, sometimes the problem resides in the fact that not all systems run the same last version.
+many computers, tracking the versions can be difficult. In fact, sometimes the problem resides in the fact that not all systems run that same last version.
 
-For this reason I use to show always the version number in the caption bar of the main window, but this is only half of the problem.
+For this reason, I use always to show the version number in the caption bar of the main window, but this is only half of the problem.
 If you compile with a slight modification that makes the difference and you forget to update manually your version number, then two recent 
 versions seem equal but they are not.
 
-**The solution**
+The solution
+------------
 
-This application is aimed at solving this kind of problems: every time you launch a new compilation, a dialog box will pop up where you can add a brief 
-comment about the changes implemented in this version. The **revision** component of the Microsoft Version (rightmost, least significant number) will be 
-alwayz be automatically increased so every executable will be distinguishable from any other.
+This application is aimed at solving this kind of problems: every time you launch a new compilation, a dialog box will pop up where you can type notes 
+about the changes implemented in this compilation cycle. The **revision** component of the Microsoft Version (rightmost, least significant number) will  
+always be automatically increased so every executable will be distinguishable from any other.
 
 All this information is stored as comments into the **AssemblyInfo.cs** that is always part of a standard Visual Studio solution and therefore it becomes a useful
 documentation file.
 
 **CommentAssembbly** is a WPF appication targeted at the .NET platform that integrates into Visual Studio.
 
-**Installation**
+Installation
+------------
 
 In order to install **CommentAssembly** follow these steps
 
@@ -36,7 +40,8 @@ In order to install **CommentAssembly** follow these steps
 
 ![MainScreen](./doc/img01.png)
 
-**Usage**
+Usage
+-----
 
 When you launch a new compilation, the **ContentAssembly** main window will pop up.
 
@@ -63,7 +68,8 @@ You can type your notes about the current compilation step into the top dialog b
 ![MainScreen](./doc/img02.png)
 
 
-**How are your notest stored**
+How are your notest stored
+---------------------------
 
 The notes are stored as comments in the **AssemblyInfo.cs** file that normally is inside the Properties folder of your solution.
 
