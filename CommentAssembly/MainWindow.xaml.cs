@@ -23,7 +23,7 @@ namespace CommentAssembly
         /// <summary>
         /// Timeout in seconds. After this timeout, if no interaction has been sensed, the window is closed to let the compilation continue.
         /// </summary>
-        public static readonly int SecTimeout = 5;
+        public static readonly int SecTimeout = 2;
 
         /// <summary>
         /// True indicates that an interaction happened with the window.

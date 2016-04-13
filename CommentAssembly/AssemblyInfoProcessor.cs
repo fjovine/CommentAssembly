@@ -33,6 +33,26 @@ namespace CommentAssembly
         private static readonly string AssemblyVersionSignature = "[assembly: AssemblyVersion(";
 
         /// <summary>
+        /// Prefix string of a line that delimitates the to-do start area in the AssemblyInfo.cs file
+        /// </summary>
+        private static readonly string StartOfTodoSignature = "[assembly: AssemblyCulture(";
+
+        /// <summary>
+        /// Prefix string for the first line of a new to-do in the AssemblyInfo.cs file
+        /// </summary>
+        private static readonly string StartOfTodoContent = "// TODO [";
+
+        /// <summary>
+        /// Prefix string for the following lines of the already started to-do's in the AssemblyInfo.cs file
+        /// </summary>
+        private static readonly string StartOfTodoFollowing = "// TODO";
+
+        /// <summary>
+        /// Ending string for the to-do zone in the AssemblyInfo.cs file
+        /// </summary>
+        private static readonly string EndOfTodos = "// ENDTODO";
+
+        /// <summary>
         /// Number of lines containing the latest compilation comments to be loaded from <c>AssemblyInfo.cs</c>
         /// file.
         /// </summary>
@@ -52,14 +72,19 @@ namespace CommentAssembly
         /// Initializes a new instance of the <see cref="AssemblyInfoProcessor" /> class.<para/>
         /// </summary>
         /// <param name="reader">TextReader of the <c>AssemblyInfo.cs</c> formatted file.</param>
-        public AssemblyInfoProcessor(TextReader reader)
-        {
+        /// <param name="todoList">Class responsible for to-do storage</param>
+        public AssemblyInfoProcessor(TextReader reader, ITodoList todoList = null)
+        { 
             using (reader)
             {
+                int lineNumber = 0;
                 bool versionLoaded = false;
+                bool todoLoaded = false;
+                bool todoLoading = false;
                 while (true)
                 {
-                    string line = reader.ReadLine();                    
+                    string line = reader.ReadLine();
+                    lineNumber++;
                     if (line == null)
                     {
                         if (!versionLoaded)
@@ -75,6 +100,56 @@ namespace CommentAssembly
                     line = line.Trim();
                     if (line == string.Empty)
                     {
+                        continue;
+                    }
+
+                    if (line.StartsWith(StartOfTodoSignature))
+                    {
+                        if (todoLoaded)
+                        {
+                            throw new FileFormatException("More than a todo zone: line" + lineNumber);
+                        }
+
+                        if (todoLoading)
+                        {
+                            throw new FileFormatException("More than a todo zone: line" + lineNumber);
+                        }
+
+                        todoLoading = true;
+                        continue;
+                    }
+
+                    if (todoLoading && line.StartsWith(StartOfTodoFollowing))
+                    {
+                        if (line.StartsWith(StartOfTodoContent))
+                        {
+                            bool done = line[StartOfTodoContent.Length] != ' ';
+                            int startOfContent = line.IndexOf(']');
+                            if (startOfContent < 0)
+                            {
+                                throw new FileFormatException("Error in todo line: line" + lineNumber);
+                            }
+
+                            if (todoList != null)
+                            {
+                                todoList.AddTodo(done, line.Substring(startOfContent + 1).TrimStart());
+                            }
+                        }
+                        else
+                        {
+                            if (todoList != null)
+                            {
+                                todoList.AppendLineTodo(line.Substring(StartOfTodoFollowing.Length).TrimStart());
+                            }
+                        }
+
+                        continue;
+                    }
+
+                    if (todoLoading && line.StartsWith(EndOfTodos))
+                    {
+                        todoLoading = false;
+                        todoLoaded = true;
                         continue;
                     }
 
@@ -161,7 +236,8 @@ namespace CommentAssembly
             {
                 using (StreamReader reader = new StreamReader(filePath))
                 {
-                    result = new AssemblyInfoProcessor(reader);
+                    TodoManager todoManager = new TodoManager();
+                    result = new AssemblyInfoProcessor(reader, todoManager);
                 }
 
                 string[] parsedPath = Path.GetFullPath(filePath).Split(Path.DirectorySeparatorChar);
@@ -182,6 +258,7 @@ namespace CommentAssembly
         {
             string filePath = Path.Combine(projectFolder, Properties, AssemblyInfoName);
             string backupPath = filePath + ".bak";
+            bool loadingTodoList = false;
             try
             {
                 File.Copy(filePath, backupPath, true);
@@ -215,6 +292,37 @@ namespace CommentAssembly
                                     {
                                         writer.WriteLine("//// " + commentLine);
                                     }
+                                }
+                            }
+                            else if (line.StartsWith(StartOfTodoSignature))
+                            {
+                                writer.WriteLine(line);
+                                loadingTodoList = true;
+                            }
+                            else if (loadingTodoList)
+                            {
+                                if (line.StartsWith(EndOfTodos))
+                                {
+                                    loadingTodoList = false;
+                                    foreach (var todo in ToDoList.TheToDoList)
+                                    {
+                                        string[] todoLines = todo.Description.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                                        writer.Write(StartOfTodoContent);
+                                        writer.Write(todo.IsDone ? 'X' : ' ');
+                                        writer.Write("] ");
+                                        writer.WriteLine(todoLines[0]);
+                                        if (todoLines.Length > 1)
+                                        {
+                                            for (int i = 1; i < todoLines.Length; i++)
+                                            {
+                                                writer.Write(StartOfTodoFollowing);
+                                                writer.Write(' ');
+                                                writer.WriteLine(todoLines[i]);
+                                            }
+                                        }
+                                    }
+
+                                    writer.WriteLine(EndOfTodos);
                                 }
                             }
                             else

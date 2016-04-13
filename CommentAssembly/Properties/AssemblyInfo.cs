@@ -15,6 +15,9 @@ using System.Windows;
 [assembly: AssemblyCopyright("Copyright © Francesco Iovine 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+// TODO [ ] 2
+// TODO [ ] 3
+// ENDTODO
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -51,8 +54,84 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.34")]
-[assembly: AssemblyFileVersion("1.0.0.34")]
+[assembly: AssemblyVersion("1.0.0.71")]
+[assembly: AssemblyFileVersion("1.0.0.71")]
+
+//// 1.0.0.71  Compiled 4/13/2016 10:38:19 PM
+
+//// 1.0.0.70  Compiled 4/13/2016 10:37:35 PM
+
+//// 1.0.0.69  Compiled 13/04/2016 18.42.21
+
+//// 1.0.0.68  Compiled 13/04/2016 18.35.59
+
+//// 1.0.0.67  Compiled 13/04/2016 18.34.08
+
+//// 1.0.0.66  Compiled 13/04/2016 18.33.32
+
+//// 1.0.0.65  Compiled 13/04/2016 18.23.36
+
+//// 1.0.0.64  Compiled 13/04/2016 18.22.38
+
+//// 1.0.0.63  Compiled 13/04/2016 18.20.31
+
+//// 1.0.0.62  Compiled 13/04/2016 18.19.26
+
+//// 1.0.0.61  Compiled 13/04/2016 18.09.57
+
+//// 1.0.0.60  Compiled 13/04/2016 18.01.11
+
+//// 1.0.0.59  Compiled 13/04/2016 18.00.13
+
+//// 1.0.0.58  Compiled 13/04/2016 17.53.38
+
+//// 1.0.0.57  Compiled 13/04/2016 17.52.23
+
+//// 1.0.0.56  Compiled 13/04/2016 06.47.37
+
+//// 1.0.0.55  Compiled 13/04/2016 06.47.05
+
+//// 1.0.0.54  Compiled 13/04/2016 06.45.48
+
+//// 1.0.0.53  Compiled 13/04/2016 06.40.48
+
+//// 1.0.0.52  Compiled 13/04/2016 06.34.21
+
+//// 1.0.0.51  Compiled 13/04/2016 06.33.53
+
+//// 1.0.0.50  Compiled 13/04/2016 06.31.02
+
+//// 1.0.0.49  Compiled 13/04/2016 06.29.55
+
+//// 1.0.0.48  Compiled 13/04/2016 06.27.03
+
+//// 1.0.0.47  Compiled 13/04/2016 06.24.30
+
+//// 1.0.0.46  Compiled 13/04/2016 06.20.35
+
+//// 1.0.0.45  Compiled 13/04/2016 06.15.56
+//// Added todo decode and encode
+
+//// 1.0.0.44  Compiled 13/04/2016 06.13.38
+
+//// 1.0.0.43  Compiled 13/04/2016 05.58.53
+
+//// 1.0.0.42  Compiled 13/04/2016 05.54.56
+
+//// 1.0.0.41  Compiled 12/04/2016 06.17.30
+
+//// 1.0.0.40  Compiled 12/04/2016 06.16.16
+
+//// 1.0.0.39  Compiled 12/04/2016 06.12.10
+
+//// 1.0.0.38  Compiled 12/04/2016 06.11.35
+
+//// 1.0.0.37  Compiled 12/04/2016 06.10.35
+
+//// 1.0.0.36  Compiled 12/04/2016 06.09.13
+//// Added ToDo list
+
+//// 1.0.0.35  Compiled 12/04/2016 06.08.12
 
 //// 1.0.0.34  Compiled 24/03/2016 18.48.40
 //// Inserted a progress bar to indicate the timeout clicking.
