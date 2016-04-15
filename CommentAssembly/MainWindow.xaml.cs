@@ -28,14 +28,17 @@ namespace CommentAssembly
         /// <summary>
         /// True indicates that an interaction happened with the window.
         /// </summary>
+#if DEBUG
+        private bool interactionHappened = true;
+#else
         private bool interactionHappened = false;
+#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow" /> class.
         /// </summary>
         public MainWindow()
         {
-            this.InitializeComponent();
             this.TheAssemblyInfo = AssemblyInfoProcessor.LoadAssemblyInfo(this.ProjectFolder);
             if (this.TheAssemblyInfo == null)
             {
@@ -43,8 +46,12 @@ namespace CommentAssembly
                 Environment.Exit(1);
             }
 
+            this.InitializeComponent();
+#if !DEBUG
+            this.Topmost = true;
+#endif
             this.Title = "Project [" + this.TheAssemblyInfo.ProjectName + "] Current Version :" + this.TheAssemblyInfo;
-            this.Release.Content = "CommentAssembly rel. " + Assembly.GetExecutingAssembly().GetName().Version;
+            this.Release.Text= "CommentAssembly rel. " + Assembly.GetExecutingAssembly().GetName().Version;
             foreach (string line in this.TheAssemblyInfo.LastComments)
             {
                 this.History.AppendText(line);
@@ -99,8 +106,10 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Window_Deactivated(object sender, EventArgs e)
         {
+#if !DEBUG
             Window window = (Window)sender;
             window.Topmost = true;
+#endif
         }
 
         /// <summary>
@@ -155,6 +164,11 @@ namespace CommentAssembly
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             this.interactionHappened = true;
+        }
+
+        private void ButtonProperties_Click(object sender, RoutedEventArgs e)
+        {
+            this.PropertiesPanel.Visibility = this.PropertiesActivator.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

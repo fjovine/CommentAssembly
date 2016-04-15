@@ -15,8 +15,15 @@ using System.Windows;
 [assembly: AssemblyCopyright("Copyright © Francesco Iovine 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-// TODO [ ] 2
-// TODO [ ] 3
+// TODO [X] Activate deletion of the first row
+// TODO [ ] Save the closing time as parameter
+// TODO [ ] Save size and position of the window
+// TODO [ ] Do not show ID field in the list
+// TODO [X] Reactivate checkbox on things to do list
+// TODO [ ] Save if the window should be topmost as parameter
+// TODO [X] Description field not editable
+// TODO [X] Insert a properties window
+// TODO [ ] When something has been done, add it  automatically to the compilation comment
 // ENDTODO
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -54,8 +61,119 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.71")]
-[assembly: AssemblyFileVersion("1.0.0.71")]
+[assembly: AssemblyVersion("1.0.0.124")]
+[assembly: AssemblyFileVersion("1.0.0.124")]
+
+//// 1.0.0.124  Compiled 15/04/2016 08.11.18
+
+//// 1.0.0.123  Compiled 15/04/2016 08.10.04
+
+//// 1.0.0.122  Compiled 15/04/2016 08.07.03
+
+//// 1.0.0.121  Compiled 15/04/2016 07.07.08
+
+//// 1.0.0.120  Compiled 15/04/2016 07.06.07
+
+//// 1.0.0.119  Compiled 15/04/2016 07.05.24
+//// Property panel active
+
+//// 1.0.0.118  Compiled 15/04/2016 07.03.06
+
+//// 1.0.0.117  Compiled 15/04/2016 07.00.53
+
+//// 1.0.0.116  Compiled 15/04/2016 06.57.40
+
+//// 1.0.0.115  Compiled 15/04/2016 06.56.13
+
+//// 1.0.0.114  Compiled 15/04/2016 06.55.23
+
+//// 1.0.0.113  Compiled 15/04/2016 06.50.33
+
+//// 1.0.0.112  Compiled 15/04/2016 06.40.40
+
+//// 1.0.0.111  Compiled 15/04/2016 06.39.56
+
+//// 1.0.0.110  Compiled 15/04/2016 06.38.45
+
+//// 1.0.0.109  Compiled 15/04/2016 06.37.36
+
+//// 1.0.0.108  Compiled 15/04/2016 06.36.41
+
+//// 1.0.0.107  Compiled 15/04/2016 06.35.32
+
+//// 1.0.0.106  Compiled 15/04/2016 06.33.07
+
+//// 1.0.0.105  Compiled 15/04/2016 06.21.44
+
+//// 1.0.0.104  Compiled 15/04/2016 06.18.35
+//// Il checkbox "fatto" è stato riattivato
+
+//// 1.0.0.103  Compiled 15/04/2016 06.13.34
+
+//// 1.0.0.102  Compiled 15/04/2016 06.05.58
+//// Attivata la cancellazione della prima riga
+
+//// 1.0.0.101  Compiled 15/04/2016 05.59.41
+
+//// 1.0.0.100  Compiled 14/04/2016 18.56.57
+
+//// 1.0.0.99  Compiled 14/04/2016 18.56.31
+
+//// 1.0.0.98  Compiled 14/04/2016 18.54.11
+
+//// 1.0.0.97  Compiled 14/04/2016 18.52.33
+
+//// 1.0.0.96  Compiled 14/04/2016 18.51.08
+
+//// 1.0.0.95  Compiled 14/04/2016 18.22.19
+
+//// 1.0.0.94  Compiled 14/04/2016 17.56.38
+
+//// 1.0.0.93  Compiled 14/04/2016 17.52.56
+
+//// 1.0.0.92  Compiled 14/04/2016 06.46.25
+
+//// 1.0.0.91  Compiled 14/04/2016 06.45.34
+
+//// 1.0.0.90  Compiled 14/04/2016 06.45.04
+
+//// 1.0.0.89  Compiled 14/04/2016 06.41.59
+//// The main windows closure on timeout is only on release mode
+
+//// 1.0.0.88  Compiled 14/04/2016 06.41.15
+
+//// 1.0.0.87  Compiled 14/04/2016 06.40.48
+
+//// 1.0.0.86  Compiled 14/04/2016 06.39.33
+
+//// 1.0.0.85  Compiled 14/04/2016 06.35.00
+
+//// 1.0.0.84  Compiled 14/04/2016 06.34.14
+
+//// 1.0.0.83  Compiled 14/04/2016 06.32.49
+
+//// 1.0.0.82  Compiled 14/04/2016 06.19.17
+
+//// 1.0.0.81  Compiled 14/04/2016 06.17.41
+
+//// 1.0.0.80  Compiled 14/04/2016 06.14.31
+
+//// 1.0.0.79  Compiled 14/04/2016 06.14.08
+
+//// 1.0.0.78  Compiled 14/04/2016 06.13.31
+
+//// 1.0.0.77  Compiled 14/04/2016 06.12.48
+
+//// 1.0.0.76  Compiled 14/04/2016 06.00.19
+
+//// 1.0.0.75  Compiled 14/04/2016 05.55.58
+//// TheToDoList is private now
+
+//// 1.0.0.74  Compiled 14/04/2016 05.40.05
+
+//// 1.0.0.73  Compiled 14/04/2016 05.38.47
+
+//// 1.0.0.72  Compiled 14/04/2016 05.37.48
 
 //// 1.0.0.71  Compiled 4/13/2016 10:38:19 PM
 

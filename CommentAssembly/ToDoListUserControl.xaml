@@ -21,7 +21,7 @@
             HorizontalAlignment="Stretch"             
             Margin="0,5,0,5" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
         <Button x:Name="EditButton"
-            Grid.Row="0" Grid.Column="1" Width="50"
+            Grid.Row="0" Grid.Column="1" 
             Content="Add" Margin="5,5,5,5" Height="20" VerticalAlignment="Top"
             Click="Button_Click"/>
         <Button x:Name="DelButton"
@@ -29,11 +29,11 @@
             Content="Del" Margin="5,30,5,5" Height="20" VerticalAlignment="Top"
             IsEnabled="False"
             Click="Delete_Click"/>
-        <CheckBox Grid.Row="0" Grid.Column="1" Margin="5,60,5,5">
-            <TextBox AcceptsReturn="True" >
-                Show
-                Deleted
-            </TextBox>
+        <CheckBox Grid.Row="0" Grid.Column="1" Margin="5,60,5,5" x:Name="ShowDeleted" Click="ShowDeleted_Click">
+            <StackPanel>
+                <TextBlock>Show</TextBlock>
+                <TextBlock>all</TextBlock>
+            </StackPanel>
         </CheckBox>
 
         <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" />
@@ -54,8 +54,9 @@
             SelectionUnit="FullRow"
             SelectionMode="Single" SelectionChanged="TodoList_SelectionChanged">
             <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}"  Visibility="Visible"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Binding="{Binding IsDone, Mode=TwoWay}"/>
-                <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}"/>
+                <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

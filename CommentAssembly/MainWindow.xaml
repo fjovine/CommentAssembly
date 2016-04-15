@@ -10,13 +10,12 @@
         Deactivated="Window_Deactivated"
         Loaded="Window_Loaded"
         PreviewKeyDown ="Window_KeyDown"
-        PreviewMouseDown="Window_MouseDown"
-        Topmost="True">
+        PreviewMouseDown="Window_MouseDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500"/>
@@ -31,10 +30,21 @@
             x:Name="History" Margin="3,3,3,3" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
             IsEnabled="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
             IsReadOnly="True" />
-        <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Orientation="Horizontal">
-            <ProgressBar x:Name="TimeoutProgress" Width="100" Margin="5,5,5,5"/>
-            <Label HorizontalAlignment="Right" x:Name="Release" />
-        </StackPanel>
+        <Grid Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ProgressBar Grid.Column="0" Grid.Row ="0" x:Name="TimeoutProgress"  Margin="5,5,5,5"/>
+            <TextBlock Grid.Column="1" Grid.Row ="0" HorizontalAlignment="Right" x:Name="Release" Margin="0,1,0,2" VerticalAlignment="Center"/>
+            <CheckBox Grid.Column="2" Grid.Row ="0" x:Name="PropertiesActivator"  Content="Properties" Click="ButtonProperties_Click" VerticalAlignment="Center" Margin="5,0,5,0"/>
+            <local:PropertiesPanel x:Name="PropertiesPanel" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Collapsed"/>
+        </Grid>
         <GroupBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Header="To do">
             <local:ToDoList x:Name="ListToDo" />
         </GroupBox>

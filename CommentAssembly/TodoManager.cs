@@ -26,7 +26,7 @@ namespace CommentAssembly
         /// <param name="content">Description of what must be done.</param>
         public void AddTodo(bool done, string content)
         {
-            ToDoList.AddTodo(done, content);
+            ThingTodo.Add(done, content);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace CommentAssembly
         /// <param name="content">Line to be added to the last to-do</param>
         public void AppendLineTodo(string content)
         {
-            ToDoList.AppendLineTodo(content);
+            ThingTodo.AppendLine(content);
         }
     }
 }

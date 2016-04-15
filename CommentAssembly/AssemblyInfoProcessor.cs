@@ -304,23 +304,24 @@ namespace CommentAssembly
                                 if (line.StartsWith(EndOfTodos))
                                 {
                                     loadingTodoList = false;
-                                    foreach (var todo in ToDoList.TheToDoList)
-                                    {
-                                        string[] todoLines = todo.Description.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                                        writer.Write(StartOfTodoContent);
-                                        writer.Write(todo.IsDone ? 'X' : ' ');
-                                        writer.Write("] ");
-                                        writer.WriteLine(todoLines[0]);
-                                        if (todoLines.Length > 1)
+
+                                    ThingTodo.ForEach((todo) =>
                                         {
-                                            for (int i = 1; i < todoLines.Length; i++)
+                                            string[] todoLines = todo.Description.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                                            writer.Write(StartOfTodoContent);
+                                            writer.Write(todo.IsDone ? 'X' : ' ');
+                                            writer.Write("] ");
+                                            writer.WriteLine(todoLines[0]);
+                                            if (todoLines.Length > 1)
                                             {
-                                                writer.Write(StartOfTodoFollowing);
-                                                writer.Write(' ');
-                                                writer.WriteLine(todoLines[i]);
+                                                for (int i = 1; i < todoLines.Length; i++)
+                                                {
+                                                    writer.Write(StartOfTodoFollowing);
+                                                    writer.Write(' ');
+                                                    writer.WriteLine(todoLines[i]);
+                                                }
                                             }
-                                        }
-                                    }
+                                        });
 
                                     writer.WriteLine(EndOfTodos);
                                 }

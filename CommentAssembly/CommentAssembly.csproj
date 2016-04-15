@@ -72,9 +72,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ITodoList.cs" />
+    <Compile Include="PropertiesPanel.xaml.cs">
+      <DependentUpon>PropertiesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ThingTodo.cs" />
     <Compile Include="ToDoListUserControl.xaml.cs">
       <DependentUpon>ToDoListUserControl.xaml</DependentUpon>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="TodoManager.cs" />
     <Page Include="MainWindow.xaml">
@@ -94,6 +98,10 @@
       <SubType>Code</SubType>
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
+    <Page Include="PropertiesPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ToDoListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
