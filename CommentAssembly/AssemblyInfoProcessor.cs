@@ -53,6 +53,11 @@ namespace CommentAssembly
         private static readonly string EndOfTodos = "// ENDTODO";
 
         /// <summary>
+        /// Starting string that encodes a program property
+        /// </summary>
+        private static readonly string TodoParam = "// TODO PARAM";
+
+        /// <summary>
         /// Number of lines containing the latest compilation comments to be loaded from <c>AssemblyInfo.cs</c>
         /// file.
         /// </summary>
@@ -100,6 +105,18 @@ namespace CommentAssembly
                     line = line.Trim();
                     if (line == string.Empty)
                     {
+                        continue;
+                    }
+
+                    if (line.StartsWith(TodoParam))
+                    {
+                        string[] elems = line.Substring(TodoParam.Length).Trim().Split('=');
+                        if (elems.Length != 2) 
+                        {
+                            throw new FileFormatException("Wrong param line format: line " + lineNumber);
+                        }
+
+                        ProgramProperty.Set(elems[0], elems[1]);
                         continue;
                     }
 
@@ -301,7 +318,7 @@ namespace CommentAssembly
                             }
                             else if (loadingTodoList)
                             {
-                                if (line.StartsWith(EndOfTodos))
+                                if (line.StartsWith(EndOfTodos) || (!line.StartsWith(StartOfTodoFollowing)))
                                 {
                                     loadingTodoList = false;
 
@@ -324,6 +341,18 @@ namespace CommentAssembly
                                         });
 
                                     writer.WriteLine(EndOfTodos);
+                                    ProgramProperty.ForEach((property, value) =>
+                                    {
+                                        writer.Write(TodoParam);
+                                        writer.Write(' ');
+                                        writer.Write(property);
+                                        writer.Write('=');
+                                        writer.WriteLine(value);
+                                    });
+                                }
+                                else
+                                {
+                                    loadingTodoList = line.StartsWith(StartOfTodoFollowing);
                                 }
                             }
                             else

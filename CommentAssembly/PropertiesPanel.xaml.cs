@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿//-----------------------------------------------------------------------
+// <copyright file="PropertiesPanel.xaml.cs" company="hiLab">
+//     Copyright (c) Francesco Iovine.
+// </copyright>
+// <author>Francesco Iovine iovinemeccanica@gmail.com</author>
+// <creation>2016.04.14</creation>
+//-----------------------------------------------------------------------
 
 namespace CommentAssembly
 {
+    using System.Windows.Controls;
+
     /// <summary>
-    /// Logica di interazione per PropertiesPanel.xaml
+    /// Interaction logic with <c>PropertiesPanel.xaml</c>
     /// </summary>
     public partial class PropertiesPanel : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PropertiesPanel" /> class.
+        /// </summary>
         public PropertiesPanel()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

@@ -5,14 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CommentAssembly"
              mc:Ignorable="d" >
+    <UserControl.Resources>
+        <local:ProgramProperty x:Key="Property"/>
+    </UserControl.Resources> 
     <GroupBox Header="Properties">
         <StackPanel>
-            <CheckBox Content="Keep On Top"  />
-            <CheckBox Content="Save Window size and position on exit"  />
-            <CheckBox Content="Close window automatically" />
+            <CheckBox Content="Keep On Top"  IsChecked="{Binding Source={StaticResource Property}, Path=KeepOnTop }" />
+            <CheckBox Content="Save Window size and position on exit"  IsChecked="{Binding Source={StaticResource Property}, Path=SaveWinSize}" />
+            <CheckBox Content="Close window automatically" IsChecked="{Binding Source={StaticResource Property}, Path=CloseWinAutomatically}" />
             <StackPanel Orientation="Horizontal">
                 <Label Content="Closing time (s) "/>
-                <TextBox Width="50" Margin="5,2,5,2"/>
+                    <TextBox Width="50" Margin="5,2,5,2" Text="{Binding Source={StaticResource Property}, Path=ClosingTime}"/>
             </StackPanel>
         </StackPanel>
     </GroupBox>

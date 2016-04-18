@@ -51,7 +51,7 @@ namespace CommentAssembly
             this.Topmost = true;
 #endif
             this.Title = "Project [" + this.TheAssemblyInfo.ProjectName + "] Current Version :" + this.TheAssemblyInfo;
-            this.Release.Text= "CommentAssembly rel. " + Assembly.GetExecutingAssembly().GetName().Version;
+            this.Release.Text = "CommentAssembly rel. " + Assembly.GetExecutingAssembly().GetName().Version;
             foreach (string line in this.TheAssemblyInfo.LastComments)
             {
                 this.History.AppendText(line);
@@ -166,6 +166,11 @@ namespace CommentAssembly
             this.interactionHappened = true;
         }
 
+        /// <summary>
+        /// Handler of the event signaling that the properties checkbox is active
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
         private void ButtonProperties_Click(object sender, RoutedEventArgs e)
         {
             this.PropertiesPanel.Visibility = this.PropertiesActivator.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
