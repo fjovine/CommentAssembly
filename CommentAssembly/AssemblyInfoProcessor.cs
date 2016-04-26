@@ -300,7 +300,6 @@ namespace CommentAssembly
                                 writer.Write('"');
                                 writer.Write(version);
                                 writer.WriteLine("\")]");
-                                writer.WriteLine();
 
                                 writer.WriteLine("//// " + version + "  Compiled " + DateTime.Now);
                                 if (comment != null)
@@ -315,6 +314,10 @@ namespace CommentAssembly
                             {
                                 writer.WriteLine(line);
                                 loadingTodoList = true;
+                            }
+                            else if (line.StartsWith(TodoParam))
+                            {
+                                continue;
                             }
                             else if (loadingTodoList)
                             {

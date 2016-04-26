@@ -16,15 +16,24 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // TODO [X] Activate deletion of the first row
-// TODO [ ] Save the closing time as parameter
-// TODO [ ] Save size and position of the window
+// TODO [X] Save the closing time as parameter
+// TODO [X] Save size and position of the window
 // TODO [ ] Do not show ID field in the list
 // TODO [X] Reactivate checkbox on things to do list
-// TODO [ ] Save if the window should be topmost as parameter
+// TODO [X] Save if the window should be topmost as parameter
 // TODO [X] Description field not editable
 // TODO [X] Insert a properties window
 // TODO [ ] When something has been done, add it  automatically to the compilation comment
+// TODO [X] Solve the bug that stores multiple copies of the parameters
+// TODO [X] The Add button should be made active only when
+// TODO there is something in the todo textbox
+// TODO [X] Do not leave a void row every line with the release number
+// TODO [X] Delete the property SaveWindowsSize
 // ENDTODO
+// TODO PARAM KeepOnTop=True
+// TODO PARAM CloseWinAutomatically=True
+// TODO PARAM ClosingTime=51
+// TODO PARAM WinLocation=213;144;1080;558
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -61,8 +70,42 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.124")]
-[assembly: AssemblyFileVersion("1.0.0.124")]
+[assembly: AssemblyVersion("1.0.0.152")]
+[assembly: AssemblyFileVersion("1.0.0.152")]
+//// 1.0.0.152  Compiled 26/04/2016 19.57.56
+//// Solved the problem of void lines between the versions
+//// 1.0.0.151  Compiled 26/04/2016 19.56.34
+//// 1.0.0.150  Compiled 26/04/2016 19.54.43
+//// 1.0.0.149  Compiled 26/04/2016 19.34.51
+//// 1.0.0.148  Compiled 26/04/2016 19.33.41
+//// 1.0.0.147  Compiled 26/04/2016 19.32.50
+//// 1.0.0.146  Compiled 26/04/2016 19.31.36
+//// Saved window position
+//// 1.0.0.145  Compiled 26/04/2016 19.30.44
+//// 1.0.0.144  Compiled 26/04/2016 19.30.24
+//// 1.0.0.143  Compiled 26/04/2016 19.27.39
+//// 1.0.0.142  Compiled 26/04/2016 19.27.11
+//// 1.0.0.141  Compiled 26/04/2016 19.26.08
+//// 1.0.0.140  Compiled 26/04/2016 19.23.56
+//// 1.0.0.139  Compiled 26/04/2016 19.23.00
+//// 1.0.0.138  Compiled 26/04/2016 19.22.32
+//// 1.0.0.137  Compiled 26/04/2016 19.22.09
+//// 1.0.0.136  Compiled 26/04/2016 19.19.39
+//// 1.0.0.135  Compiled 26/04/2016 18.36.39
+//// 1.0.0.134  Compiled 26/04/2016 18.35.42
+//// 1.0.0.133  Compiled 26/04/2016 18.30.54
+//// 1.0.0.132  Compiled 26/04/2016 18.28.57
+//// 1.0.0.131  Compiled 26/04/2016 18.27.53
+//// Solved the bug that caused multiple storage of the todo parameters
+//// 1.0.0.130  Compiled 26/04/2016 18.26.48
+//// 1.0.0.129  Compiled 26/04/2016 18.23.29
+//// 1.0.0.128  Compiled 26/04/2016 18.22.42
+
+//// 1.0.0.127  Compiled 26/04/2016 18.21.16
+
+//// 1.0.0.126  Compiled 26/04/2016 18.18.03
+
+//// 1.0.0.125  Compiled 26/04/2016 18.16.54
 
 //// 1.0.0.124  Compiled 15/04/2016 08.11.18
 

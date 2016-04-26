@@ -46,6 +46,39 @@ namespace CommentAssembly
                 Environment.Exit(1);
             }
 
+            Rect rc = ProgramProperty.WinLocation;
+            this.Left = rc.X;
+            this.Top = rc.Y;
+            this.Width = rc.Width;
+            this.Height = rc.Height;
+
+            Rect virtualScreen = new Rect(SystemParameters.VirtualScreenLeft, SystemParameters.VirtualScreenTop, SystemParameters.VirtualScreenWidth, SystemParameters.VirtualScreenHeight);
+            if (!virtualScreen.Contains(rc))
+            {
+                // The screen containing all the screens does not contain the stored coordinates. We move the rectangle inside the screen.
+                if (this.Width < virtualScreen.Width)
+                {
+                    double horizontalDiff = virtualScreen.Width - this.Width;
+                    this.Left = horizontalDiff / 2;
+                }
+                else
+                {
+                    this.Left = 10;
+                    this.Width = virtualScreen.Width - 20;
+                }
+
+                if (this.Height < virtualScreen.Height)
+                {
+                    double verticalDiff = virtualScreen.Height - this.Height;
+                    this.Top = verticalDiff / 2;
+                }
+                else
+                {
+                    this.Top = 10;
+                    this.Height = virtualScreen.Height - 20;
+                }
+            }
+
             this.InitializeComponent();
 #if !DEBUG
             this.Topmost = true;
@@ -174,6 +207,20 @@ namespace CommentAssembly
         private void ButtonProperties_Click(object sender, RoutedEventArgs e)
         {
             this.PropertiesPanel.Visibility = this.PropertiesActivator.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
+            ProgramProperty.WinLocation = new Rect(this.Left, this.Top, this.Width, this.Height);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == System.Windows.WindowState.Normal)
+            {
+                // The new size is stored only if the window is in Normal mode
+                ProgramProperty.WinLocation = new Rect (this.Left, this.Top, this.ActualWidth, this.ActualHeight);
+            }
         }
     }
 }

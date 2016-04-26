@@ -10,6 +10,7 @@ namespace CommentAssembly
 {
     using System;
     using System.Collections.Generic;
+    using System.Windows;
 
     /// <summary>
     /// Manages the properties of the program, i.e. the parameters governing some UI elements
@@ -31,10 +32,7 @@ namespace CommentAssembly
         /// </summary>
         public static readonly string KEEPONTOP = "KeepOnTop";
 
-        /// <summary>
-        /// Key of the property stating that the window size and position is to be saved
-        /// </summary>
-        public static readonly string SAVEWINSIZE = "SaveWindowSave";
+        public static readonly string WINLOCATION = "WinLocation";
 
         /// <summary>
         /// Dictionary containing the registry where the properties are stored
@@ -89,19 +87,25 @@ namespace CommentAssembly
             }
         }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the window size and position is to be stored
-        /// </summary>
-        public static bool SaveWinSize
+        public static Rect WinLocation
         {
             get
             {
-                return Get<bool>(SAVEWINSIZE, false, b => bool.Parse(b));
+                return Get<Rect>(WINLOCATION, new Rect(10, 10, 900, 350), r =>
+                   {
+                       Rect result = new Rect();
+                       string[] parameters = r.Split(';');
+                       result.X = int.Parse(parameters[0]);
+                       result.Y = int.Parse(parameters[1]);
+                       result.Width = int.Parse(parameters[2]);
+                       result.Height = int.Parse(parameters[3]);
+                       return result;
+                   });
             }
 
             set
             {
-                Set<bool>(SAVEWINSIZE, value, b => b.ToString());
+                Set<Rect>(WINLOCATION, value, r => r.X + ";" + r.Y + ";" + r.Width + ";" + r.Height);
             }
         }
 

@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommentAssembly"
         mc:Ignorable="d"
-        Height="350" Width="900" 
         Closing="Window_Closing"
         Deactivated="Window_Deactivated"
         Loaded="Window_Loaded"
         PreviewKeyDown ="Window_KeyDown"
-        PreviewMouseDown="Window_MouseDown">
+        PreviewMouseDown="Window_MouseDown"
+        LocationChanged="Window_LocationChanged"
+        SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

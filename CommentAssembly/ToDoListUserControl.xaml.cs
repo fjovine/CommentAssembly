@@ -79,6 +79,7 @@ namespace CommentAssembly
             {
                 this.isModifyMode = value;
                 this.EditButton.Content = this.isModifyMode ? "Mod" : "Add";
+                this.EditButton.IsEnabled = this.TodoToAdd.Text.Length > 0;
                 this.DelButton.IsEnabled = this.isModifyMode;
             }
         }
@@ -164,6 +165,11 @@ namespace CommentAssembly
                 this.TodoToAdd.Text = todo;
                 this.IsModifyMode = true;
             }
+        }
+
+        private void TodoToAdd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.EditButton.IsEnabled = this.TodoToAdd.Text.Length > 0;
         }
     }
 }
