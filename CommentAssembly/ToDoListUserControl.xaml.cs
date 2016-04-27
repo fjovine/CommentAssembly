@@ -167,6 +167,13 @@ namespace CommentAssembly
             }
         }
 
+        /// <summary>
+        /// Handles the event happening when the text in the description of the to-do has changed.
+        /// It enables the EditButton (having Mod or Add as caption) depending on the fact that the to-do description is empty or not.
+        /// It has been added to inhibit adding void to-do's by mistake.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
         private void TodoToAdd_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.EditButton.IsEnabled = this.TodoToAdd.Text.Length > 0;

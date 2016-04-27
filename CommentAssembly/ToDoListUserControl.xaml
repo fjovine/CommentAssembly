@@ -56,7 +56,7 @@
             SelectionUnit="FullRow"
             SelectionMode="Single" SelectionChanged="TodoList_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}"  Visibility="Visible"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Id}"  Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Binding="{Binding IsDone, Mode=TwoWay}"/>
                 <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" IsReadOnly="True"/>
             </DataGrid.Columns>

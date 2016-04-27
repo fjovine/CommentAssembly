@@ -11,7 +11,6 @@
     <GroupBox Header="Properties">
         <StackPanel>
             <CheckBox Content="Keep On Top"  IsChecked="{Binding Source={StaticResource Property}, Path=KeepOnTop }" />
-            <CheckBox Content="Save Window size and position on exit"  IsChecked="{Binding Source={StaticResource Property}, Path=SaveWinSize}" />
             <CheckBox Content="Close window automatically" IsChecked="{Binding Source={StaticResource Property}, Path=CloseWinAutomatically}" />
             <StackPanel Orientation="Horizontal">
                 <Label Content="Closing time (s) "/>

@@ -18,21 +18,32 @@ using System.Windows;
 // TODO [X] Activate deletion of the first row
 // TODO [X] Save the closing time as parameter
 // TODO [X] Save size and position of the window
-// TODO [ ] Do not show ID field in the list
+// TODO [X] Do not show ID field in the list
 // TODO [X] Reactivate checkbox on things to do list
 // TODO [X] Save if the window should be topmost as parameter
 // TODO [X] Description field not editable
 // TODO [X] Insert a properties window
-// TODO [ ] When something has been done, add it  automatically to the compilation comment
+// TODO [X] When something has been done, add it  automatically to the compilation comment
 // TODO [X] Solve the bug that stores multiple copies of the parameters
 // TODO [X] The Add button should be made active only when
 // TODO there is something in the todo textbox
 // TODO [X] Do not leave a void row every line with the release number
 // TODO [X] Delete the property SaveWindowsSize
+// TODO [X] Delete "Save Windows ... " item in properties GUI
+// TODO [X] Reactivate "Keep on top" option (Debug and Release versions)
+// TODO [X] Reactivate "Close windows automatically" option (Debug and Release versions)
+// TODO [X] Use the timeout provided in the properties
+// TODO [X] When the timeout is not checked, do not show the timeout progress bar
+// TODO [X] Todo thing test 1
+// TODO [X] Todo thing test 2
+// TODO [X] Todo thing test 3
+// TODO [X] Todo thing test 4
+// TODO [ ] Add a style to the window
+// TODO [ ] Change the Properties checkbox bitmap with a down or up pointing arrow.
 // ENDTODO
 // TODO PARAM KeepOnTop=True
 // TODO PARAM CloseWinAutomatically=True
-// TODO PARAM ClosingTime=51
+// TODO PARAM ClosingTime=10
 // TODO PARAM WinLocation=213;144;1080;558
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -70,8 +81,59 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.152")]
-[assembly: AssemblyFileVersion("1.0.0.152")]
+[assembly: AssemblyVersion("1.0.0.171")]
+[assembly: AssemblyFileVersion("1.0.0.171")]
+//// 1.0.0.171  Compiled 27/04/2016 06.47.37
+//// 1.0.0.170  Compiled 27/04/2016 06.46.24
+//// 1.0.0.169  Compiled 27/04/2016 06.36.06
+//// OK tested addition of things done
+//// Done : Todo thing test 4
+//// 1.0.0.168  Compiled 27/04/2016 06.35.28
+//// Done : Todo thing test 1
+//// Done : Todo thing test 2
+//// Done : Todo thing test 3
+//// 1.0.0.167  Compiled 27/04/2016 06.34.39
+//// Corrected bug on addition of done things.
+//// 1.0.0.166  Compiled 27/04/2016 06.33.17
+//// Done : When something has been done, add it  automatically to the compilation comment
+//// 1.0.0.165  Compiled 27/04/2016 06.26.49
+//// Done : Activate deletion of the first row
+//// Done : Save the closing time as parameter
+//// Done : Save size and position of the window
+//// Done : Do not show ID field in the list
+//// Done : Reactivate checkbox on things to do list
+//// Done : Save if the window should be topmost as parameter
+//// Done : Description field not editable
+//// Done : Insert a properties window
+//// Done : Solve the bug that stores multiple copies of the parameters
+//// Done : The Add button should be made active only when
+//// there is something in the todo textbox
+//// Done : Do not leave a void row every line with the release number
+//// Done : Delete the property SaveWindowsSize
+//// Done : Delete "Save Windows ... " item in properties GUI
+//// Done : Reactivate "Keep on top" option (Debug and Release versions)
+//// Done : Reactivate "Close windows automatically" option (Debug and Release versions)
+//// Done : Use the timeout provided in the properties
+//// Done : When the timeout is not checked, do not show the timeout progress bar
+//// Done : When something has been done, add it  automatically to the compilation comment
+//// 1.0.0.164  Compiled 27/04/2016 06.12.59
+//// 1.0.0.163  Compiled 27/04/2016 05.43.25
+//// Reactivated Keep On Top option on all versions.
+//// 1.0.0.162  Compiled 27/04/2016 05.41.16
+//// When the closing timeout is inactive, the timeout progress bar is collapsed
+//// 1.0.0.161  Compiled 27/04/2016 05.40.18
+//// 1.0.0.160  Compiled 27/04/2016 05.38.11
+//// 1.0.0.159  Compiled 27/04/2016 05.37.43
+//// 1.0.0.158  Compiled 27/04/2016 05.37.02
+//// Used the timeout provided in the properties
+//// 1.0.0.157  Compiled 27/04/2016 05.32.55
+//// Reactivated "Close window" after timeout
+//// 1.0.0.156  Compiled 27/04/2016 05.31.33
+//// 1.0.0.155  Compiled 27/04/2016 05.31.06
+//// 1.0.0.154  Compiled 27/04/2016 05.27.25
+//// Deleted "Save Windows ..." item in GUI
+//// 1.0.0.153  Compiled 27/04/2016 05.25.59
+//// The ToDo Id has been deleted from the list
 //// 1.0.0.152  Compiled 26/04/2016 19.57.56
 //// Solved the problem of void lines between the versions
 //// 1.0.0.151  Compiled 26/04/2016 19.56.34

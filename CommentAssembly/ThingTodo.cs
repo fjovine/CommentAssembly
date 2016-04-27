@@ -16,11 +16,26 @@ namespace CommentAssembly
     public class ThingTodo
     {
         /// <summary>
+        /// Backing field of the <see cref="IsDone"/> property.
+        /// </summary>
+        private bool isDone;
+
+        /// <summary>
         /// Initializes static members of the <see cref="ThingTodo" /> class.
         /// </summary>
         static ThingTodo()
         {
             TheThingsToDo = new List<ThingTodo>();
+            ThingsDoneDuringThisSession = new HashSet<ThingTodo>();
+        }
+
+        /// <summary>
+        /// Gets or sets the set of to-do's that have been implemented
+        /// </summary>
+        public static HashSet<ThingTodo> ThingsDoneDuringThisSession
+        {
+            get;
+            set;
         }
 
         /// <summary>
@@ -46,8 +61,26 @@ namespace CommentAssembly
         /// </summary>
         public bool IsDone
         {
-            get;
-            set;
+            get
+            {
+                return this.isDone;
+            }
+
+            set
+            {
+                this.isDone = value;
+                if (this.isDone)
+                {
+                    ThingsDoneDuringThisSession.Add(this);
+                }
+                else
+                {
+                    if (ThingsDoneDuringThisSession.Contains(this))
+                    {
+                        ThingsDoneDuringThisSession.Remove(this);
+                    }
+                }
+            }
         }
 
         /// <summary>

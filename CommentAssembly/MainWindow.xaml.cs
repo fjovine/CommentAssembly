@@ -21,18 +21,9 @@ namespace CommentAssembly
     public partial class MainWindow : Window
     {
         /// <summary>
-        /// Timeout in seconds. After this timeout, if no interaction has been sensed, the window is closed to let the compilation continue.
-        /// </summary>
-        public static readonly int SecTimeout = 2;
-
-        /// <summary>
         /// True indicates that an interaction happened with the window.
         /// </summary>
-#if DEBUG
-        private bool interactionHappened = true;
-#else
         private bool interactionHappened = false;
-#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow" /> class.
@@ -80,9 +71,8 @@ namespace CommentAssembly
             }
 
             this.InitializeComponent();
-#if !DEBUG
-            this.Topmost = true;
-#endif
+            this.TimeoutProgress.Visibility = ProgramProperty.CloseWinAutomatically ? Visibility.Visible : Visibility.Collapsed;
+            this.Topmost = ProgramProperty.KeepOnTop;
             this.Title = "Project [" + this.TheAssemblyInfo.ProjectName + "] Current Version :" + this.TheAssemblyInfo;
             this.Release.Text = "CommentAssembly rel. " + Assembly.GetExecutingAssembly().GetName().Version;
             foreach (string line in this.TheAssemblyInfo.LastComments)
@@ -126,6 +116,19 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (ThingTodo.ThingsDoneDuringThisSession.Count > 0)
+            {
+                foreach (var todo in ThingTodo.ThingsDoneDuringThisSession)
+                {
+                    if (this.Comment.Text.Length > 0)
+                    {
+                        this.Comment.AppendText("\n");
+                    }
+
+                    this.Comment.AppendText("Done : " + todo.Description);
+                }
+            }
+
             AssemblyInfoProcessor.UpdateAssemblyInfo(
                 this.ProjectFolder,
                 this.TheAssemblyInfo.CurrentVersion.Next(),
@@ -139,10 +142,8 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Window_Deactivated(object sender, EventArgs e)
         {
-#if !DEBUG
             Window window = (Window)sender;
-            window.Topmost = true;
-#endif
+            window.Topmost = ProgramProperty.KeepOnTop;
         }
 
         /// <summary>
@@ -164,15 +165,18 @@ namespace CommentAssembly
         {
             DispatcherTimer closeIfNoKeyPressed = new DispatcherTimer();
             closeIfNoKeyPressed.Interval = new TimeSpan(0, 0, 0, 1, 0);
-            this.TimeoutProgress.Maximum = SecTimeout;
+            this.TimeoutProgress.Maximum = ProgramProperty.ClosingTime;
             this.TimeoutProgress.Minimum = 0;
             this.TimeoutProgress.Value = 0;
             int sec = 0;
             closeIfNoKeyPressed.Tick += (s, a) =>
             {
-                if (sec >= SecTimeout && !interactionHappened)
+                if (sec >= ProgramProperty.ClosingTime && !interactionHappened)
                 {
-                    this.Close();
+                    if (ProgramProperty.CloseWinAutomatically)
+                    {
+                        this.Close();
+                    }
                 }
 
                 if (interactionHappened)
@@ -209,17 +213,27 @@ namespace CommentAssembly
             this.PropertiesPanel.Visibility = this.PropertiesActivator.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Handler of the event happening when the window is dragged. Stores the windows location in the parameter.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
         private void Window_LocationChanged(object sender, EventArgs e)
         {
             ProgramProperty.WinLocation = new Rect(this.Left, this.Top, this.Width, this.Height);
         }
 
+        /// <summary>
+        /// Handler of the event happening when the window changes its size. Stores the windows location in the parameter.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.WindowState == System.Windows.WindowState.Normal)
             {
                 // The new size is stored only if the window is in Normal mode
-                ProgramProperty.WinLocation = new Rect (this.Left, this.Top, this.ActualWidth, this.ActualHeight);
+                ProgramProperty.WinLocation = new Rect(this.Left, this.Top, this.ActualWidth, this.ActualHeight);
             }
         }
     }

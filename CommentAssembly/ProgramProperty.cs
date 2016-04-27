@@ -5,7 +5,6 @@
 // <author>Francesco Iovine iovinemeccanica@gmail.com</author>
 // <creation>2016.04.14</creation>
 //-----------------------------------------------------------------------
-
 namespace CommentAssembly
 {
     using System;
@@ -32,6 +31,9 @@ namespace CommentAssembly
         /// </summary>
         public static readonly string KEEPONTOP = "KeepOnTop";
 
+        /// <summary>
+        /// Key of the property storing the position of the window when exiting the program
+        /// </summary>
         public static readonly string WINLOCATION = "WinLocation";
 
         /// <summary>
@@ -58,16 +60,16 @@ namespace CommentAssembly
         /// <summary>
         /// Gets or sets a value indicating after how many seconds the window should be closed if no human interaction is sensed.
         /// </summary>
-        public static string ClosingTime
+        public static int ClosingTime
         {
             get
             {
-                return Get<string>(CLOSINGTIME, "5", i => i);
+                return Get<int>(CLOSINGTIME, 5, i => int.Parse(i));
             }
 
             set
             {
-                Set<string>(CLOSINGTIME, value, i => i);
+                Set<int>(CLOSINGTIME, value, i => i.ToString());
             }
         }
 
@@ -87,20 +89,26 @@ namespace CommentAssembly
             }
         }
 
+        /// <summary>
+        /// Gets or sets the MainWindow's location
+        /// </summary>
         public static Rect WinLocation
         {
             get
             {
-                return Get<Rect>(WINLOCATION, new Rect(10, 10, 900, 350), r =>
-                   {
-                       Rect result = new Rect();
-                       string[] parameters = r.Split(';');
-                       result.X = int.Parse(parameters[0]);
-                       result.Y = int.Parse(parameters[1]);
-                       result.Width = int.Parse(parameters[2]);
-                       result.Height = int.Parse(parameters[3]);
-                       return result;
-                   });
+                return Get<Rect>(
+                    WINLOCATION,
+                    new Rect(10, 10, 900, 350),
+                    r =>
+                    {
+                        Rect result = new Rect();
+                        string[] parameters = r.Split(';');
+                        result.X = int.Parse(parameters[0]);
+                        result.Y = int.Parse(parameters[1]);
+                        result.Width = int.Parse(parameters[2]);
+                        result.Height = int.Parse(parameters[3]);
+                        return result;
+                    });
             }
 
             set
@@ -149,7 +157,7 @@ namespace CommentAssembly
         private static T Get<T>(string property, T defValue, Func<string, T> decoder)
         {
             string toDecode;
-            System.Diagnostics.Debug.WriteLine("Gettin property " + property);
+            System.Diagnostics.Debug.WriteLine("Getting property " + property);
             if (registry.TryGetValue(property, out toDecode))
             {
                 return decoder(toDecode);
