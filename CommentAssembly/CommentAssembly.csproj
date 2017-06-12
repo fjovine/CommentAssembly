@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="InfoProcessor\CSharpInfoProcessor.cs" />
+    <Compile Include="InfoProcessor\IInfoProcessor.cs" />
+    <Compile Include="InfoProcessor\PascalInfoProcessor.cs" />
     <Compile Include="ITodoList.cs" />
     <Compile Include="ProgramProperty.cs" />
     <Compile Include="PropertiesPanel.xaml.cs">

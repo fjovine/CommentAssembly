@@ -72,9 +72,9 @@ namespace CommentAssemblyTests
         [Test]
         public void AssemblyInfoProcessor_LoadsTheTodoList_WhenSubmittedGoodAssemblyInfo()
         {
-            TodoListTest tester = new TodoListTest();
             TextReader tr = new StringReader(infoFile);
-            new AssemblyInfoProcessor(tr, new TodoListTest());
+            IInfoProcessor assemblyInfo = new CSharpInfoProcessor();
+            assemblyInfo.LoadAssemblyInfo(tr, new TodoListTest());
         }
 
         private static string infoFile =

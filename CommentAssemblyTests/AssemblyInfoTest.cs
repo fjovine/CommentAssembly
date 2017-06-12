@@ -15,7 +15,8 @@ namespace CommentAssemblyTests
             AssemblyVersion expected = new AssemblyVersion(expectedVersion);
 
             TextReader reader = new StringReader(assemblyFile);
-            AssemblyInfoProcessor assemblyInfo = new AssemblyInfoProcessor(reader);
+            IInfoProcessor assemblyInfo = new CSharpInfoProcessor();
+            assemblyInfo.LoadAssemblyInfo(reader, null);
 
             Assert.AreEqual(expected.Major , assemblyInfo.CurrentVersion.Major);
             Assert.AreEqual(expected.Minor, assemblyInfo.CurrentVersion.Minor);
@@ -29,7 +30,8 @@ namespace CommentAssemblyTests
         public void Assemblyinfo_CorrectlyLoads_TheLastCommensts(string[] expected, string assemblyFile)
         {
             TextReader reader = new StringReader(assemblyFile);
-            AssemblyInfoProcessor assemblyInfo = new AssemblyInfoProcessor(reader);
+            IInfoProcessor assemblyInfo = new CSharpInfoProcessor();
+            assemblyInfo.LoadAssemblyInfo(reader, null);
 
             Assert.AreEqual(expected, assemblyInfo.LastComments);
         }
@@ -38,8 +40,9 @@ namespace CommentAssemblyTests
         public void AssemblyInfo_ThrowsFileFormatException_IfNoVersionIsContainedÎnFile()
         {
             TextReader reader = new StringReader("// [assembly: AssemblyVersion(\"0.1.* \")]\n[assembly: AssemblyFileVersion(\"0.1.0.941\")]\nComment1\nComment2");
+            IInfoProcessor assemblyInfo = new CSharpInfoProcessor();
 
-            Exception exception = Assert.Catch(() => new AssemblyInfoProcessor(reader));
+            Exception exception = Assert.Catch(() => assemblyInfo.LoadAssemblyInfo(reader, null));
             StringAssert.Contains("not contain", exception.Message);
         }
 
@@ -47,8 +50,9 @@ namespace CommentAssemblyTests
         public void AssemblyInfo_ThrowsFileFormatException_IfTwoVersionsAreContainedInFile()
         {
             TextReader reader = new StringReader("// [assembly: AssemblyVersion(\"0.1.* \")]\n[assembly: AssemblyVersion(\"0.1.0.941\")]\n[assembly: AssemblyFileVersion(\"0.1.0.941\")]\nComment1\nComment2\n[assembly: AssemblyVersion(\"0.1.0.941\")]\n");
+            IInfoProcessor assemblyInfo = new CSharpInfoProcessor();
 
-            Exception exception = Assert.Catch(() => new AssemblyInfoProcessor(reader));
+            Exception exception = Assert.Catch(() => assemblyInfo.LoadAssemblyInfo(reader, null));
             StringAssert.Contains("more than one", exception.Message);
         }
     }

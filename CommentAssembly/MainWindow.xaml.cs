@@ -30,7 +30,8 @@ namespace CommentAssembly
         /// </summary>
         public MainWindow()
         {
-            this.TheAssemblyInfo = AssemblyInfoProcessor.LoadAssemblyInfo(this.ProjectFolder);
+            IInfoProcessor iinfoProcessor = new CSharpInfoProcessor();
+            this.TheAssemblyInfo = AssemblyInfoProcessor.LoadAssemblyInfo(this.ProjectFolder, iinfoProcessor);
             if (this.TheAssemblyInfo == null)
             {
                 MessageBox.Show("The assembly in " + this.ProjectFolder + " cannot be loaded");
@@ -85,7 +86,7 @@ namespace CommentAssembly
         /// <summary>
         /// Gets or sets the object processing the info attached to the current assembly being processed.
         /// </summary>
-        public AssemblyInfoProcessor TheAssemblyInfo
+        public IInfoProcessor TheAssemblyInfo
         {
             get;
             set;
@@ -116,6 +117,8 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            IInfoProcessor iinfoProcessor = new CSharpInfoProcessor();
+
             if (ThingTodo.ThingsDoneDuringThisSession.Count > 0)
             {
                 foreach (var todo in ThingTodo.ThingsDoneDuringThisSession)
@@ -132,7 +135,8 @@ namespace CommentAssembly
             AssemblyInfoProcessor.UpdateAssemblyInfo(
                 this.ProjectFolder,
                 this.TheAssemblyInfo.CurrentVersion.Next(),
-                this.Comment.Text);
+                this.Comment.Text,
+                iinfoProcessor);
         }
 
         /// <summary>
@@ -171,12 +175,9 @@ namespace CommentAssembly
             int sec = 0;
             closeIfNoKeyPressed.Tick += (s, a) =>
             {
-                if (sec >= ProgramProperty.ClosingTime && !interactionHappened)
+                if (sec >= ProgramProperty.ClosingTime && !interactionHappened && ProgramProperty.CloseWinAutomatically)
                 {
-                    if (ProgramProperty.CloseWinAutomatically)
-                    {
-                        this.Close();
-                    }
+                    this.Close();
                 }
 
                 if (interactionHappened)
