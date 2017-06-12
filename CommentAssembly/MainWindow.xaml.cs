@@ -7,6 +7,7 @@
 namespace CommentAssembly
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Reflection;
@@ -20,6 +21,14 @@ namespace CommentAssembly
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly Dictionary<string, Type> Registry = new Dictionary<string, Type>()
+        {
+            { "CSHARP", typeof(CSharpInfoProcessor) },
+            { "PASCAL", typeof(PascalInfoProcessor) }
+        };
+
+        private static string languageType = "CSHARP";
+
         /// <summary>
         /// True indicates that an interaction happened with the window.
         /// </summary>
@@ -30,11 +39,12 @@ namespace CommentAssembly
         /// </summary>
         public MainWindow()
         {
-            IInfoProcessor iinfoProcessor = new CSharpInfoProcessor();
-            this.TheAssemblyInfo = AssemblyInfoProcessor.LoadAssemblyInfo(this.ProjectFolder, iinfoProcessor);
+            IInfoProcessor iinfoProcessor = (IInfoProcessor)Activator.CreateInstance(Registry[languageType]);
+
+            this.TheAssemblyInfo = AssemblyInfoProcessor.LoadAssemblyInfo(ProjectFolder, iinfoProcessor);
             if (this.TheAssemblyInfo == null)
             {
-                MessageBox.Show("The assembly in " + this.ProjectFolder + " cannot be loaded");
+                MessageBox.Show("The assembly in " + ProjectFolder + " cannot be loaded");
                 Environment.Exit(1);
             }
 
@@ -92,21 +102,61 @@ namespace CommentAssembly
             set;
         }
 
+        private static string projectFolder;
+
         /// <summary>
         /// Gets the project folder passed to the application as a command line parameter.
         /// </summary>
-        private string ProjectFolder
+        private static string ProjectFolder
         {
             get
             {
-                string result = Environment.GetCommandLineArgs()[1];
-                if (result.EndsWith("\""))
-                {
-                    result = result.Substring(0, result.Length - 1);
-                }
-
-                return result;
+                return projectFolder;
             }
+
+            set
+            {
+                if (value.EndsWith("\""))
+                {
+                    projectFolder = value.Substring(0, value.Length - 1);
+                }
+                else
+                {
+                    projectFolder = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Processes the command line. If the first parameter found is among the supported languages, then the second parameter is the position of the version file
+        /// otherwise it is the first parameter.
+        /// </summary>
+        public static bool ProcessCommandLine()
+        {
+            bool result = false;
+            string[] commandLineParameters = Environment.GetCommandLineArgs();
+            Type languageDecoder;
+            if (Registry.TryGetValue(commandLineParameters[1].ToUpperInvariant(), out languageDecoder))
+            {
+                // Format <language> <folder> in this case the number of parameters is 3
+                if (commandLineParameters.Length == 3)
+                {
+                    languageType = commandLineParameters[1].ToUpperInvariant();
+                    ProjectFolder = commandLineParameters[2];
+                    result = true;
+                }
+            }
+            else
+            {
+                // Format <language> <folder> in this case the number of parameters is 2 (defaults to csharp)
+                if (commandLineParameters.Length == 2)
+                {
+                    ProjectFolder = commandLineParameters[1];
+                    result = true;
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -117,7 +167,7 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            IInfoProcessor iinfoProcessor = new CSharpInfoProcessor();
+            IInfoProcessor iinfoProcessor = (IInfoProcessor)Activator.CreateInstance(Registry[languageType]);
 
             if (ThingTodo.ThingsDoneDuringThisSession.Count > 0)
             {
@@ -133,7 +183,7 @@ namespace CommentAssembly
             }
 
             AssemblyInfoProcessor.UpdateAssemblyInfo(
-                this.ProjectFolder,
+                ProjectFolder,
                 this.TheAssemblyInfo.CurrentVersion.Next(),
                 this.Comment.Text,
                 iinfoProcessor);

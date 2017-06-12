@@ -15,34 +15,8 @@ using System.Windows;
 [assembly: AssemblyCopyright("Copyright © Francesco Iovine 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-// TODO [X] Activate deletion of the first row
-// TODO [X] Save the closing time as parameter
-// TODO [X] Save size and position of the window
-// TODO [X] Do not show ID field in the list
-// TODO [X] Reactivate checkbox on things to do list
-// TODO [X] Save if the window should be topmost as parameter
-// TODO [X] Description field not editable
-// TODO [X] Insert a properties window
-// TODO [X] When something has been done, add it  automatically to the compilation comment
-// TODO [X] Solve the bug that stores multiple copies of the parameters
-// TODO [X] The Add button should be made active only when
-// TODO there is something in the todo textbox
-// TODO [X] Do not leave a void row every line with the release number
-// TODO [X] Delete the property SaveWindowsSize
-// TODO [X] Delete "Save Windows ... " item in properties GUI
-// TODO [X] Reactivate "Keep on top" option (Debug and Release versions)
-// TODO [X] Reactivate "Close windows automatically" option (Debug and Release versions)
-// TODO [X] Use the timeout provided in the properties
-// TODO [X] When the timeout is not checked, do not show the timeout progress bar
-// TODO [X] Todo thing test 1
-// TODO [X] Todo thing test 2
-// TODO [X] Todo thing test 3
-// TODO [X] Todo thing test 4
-// TODO [ ] Add a style to the window
-// TODO [ ] Change the Properties checkbox bitmap with a down or up pointing arrow.
 // ENDTODO
-// TODO PARAM WinLocation=266;444;900;350
-
+// TODO PARAM WinLocation=10;10;900;350
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
@@ -78,8 +52,15 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.178")]
-[assembly: AssemblyFileVersion("1.0.0.178")]
+[assembly: AssemblyVersion("1.0.0.182")]
+[assembly: AssemblyFileVersion("1.0.0.182")]
+//// 1.0.0.182  Compiled 12.06.2017 16:14:11
+//// Ok now
+//// 1.0.0.181  Compiled 12.06.2017 16:13:41
+//// 1.0.0.180  Compiled 12.06.2017 16:12:50
+//// Support for command line language choice
+//// 1.0.0.179  Compiled 12.06.2017 13:23:34
+//// - Still refactoring: introduced AbstractInfoProcessor that implements IInfoProcessor but holds some local variables to simplify decoding different languages.
 //// 1.0.0.178  Compiled 12.06.2017 13:02:47
 //// - Major refactoring. Generated the IInfoProcessor interface to supporto more languages.
 //// - The former code in AssemblyInfoProcessor has been moved to CSharpInfoProcessor

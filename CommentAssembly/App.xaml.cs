@@ -22,7 +22,7 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            if (Environment.GetCommandLineArgs().Length != 2)
+            if (! CommentAssembly.MainWindow.ProcessCommandLine())
             {
                 MessageBox.Show("Error : the project path must be provided on the command line");
                 Environment.Exit(1);
