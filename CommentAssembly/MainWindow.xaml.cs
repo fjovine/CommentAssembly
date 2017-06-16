@@ -153,7 +153,7 @@ namespace CommentAssembly
                 {
                     ProjectFolder = commandLineParameters[1];
                     result = true;
-                }
+                } 
             }
 
             return result;

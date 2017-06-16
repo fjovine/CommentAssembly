@@ -225,7 +225,7 @@ namespace CommentAssembly
         {
             if (line.Trim().StartsWith(AssemblyVersionSignature))
             {
-                writer.WriteLine(string.Format("  TVersion.FVersion := '{0}.{1}; TVersion.FVersionDebug := {2};", version.Major, version.Minor, version.Revision));
+                writer.WriteLine(string.Format("  TVersion.FVersion := '{0}.{1}'; TVersion.FVersionDebug := {2};", version.Major, version.Minor, version.Revision));
                 writer.WriteLine("// " + version + "  Compiled " + DateTime.Now);
                 if (comment != null)
                 {

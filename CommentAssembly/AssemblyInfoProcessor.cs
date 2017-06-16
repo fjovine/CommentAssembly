@@ -36,6 +36,9 @@ namespace CommentAssembly
                     result = iinfoProcessor.LoadAssemblyInfo(reader, todoManager);
                 }
 
+                // Reset the done things after load or it will always add the things already done to the list.
+                ThingTodo.ThingsDoneDuringThisSession.Clear();
+
                 string[] parsedPath = Path.GetFullPath(filePath).Split(Path.DirectorySeparatorChar);
                 result.ProjectName = parsedPath[parsedPath.Length - 3];
             }
