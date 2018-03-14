@@ -228,7 +228,7 @@ namespace CommentAssembly
                 writer.Write(version);
                 writer.WriteLine("\")]");
 
-                writer.WriteLine("//// " + version + "  Compiled " + DateTime.Now);
+                writer.WriteLine("//// " + version + "  Compiled by [" + App.TheUser+"] " + DateTime.Now);
                 if (comment != null)
                 {
                     foreach (string commentLine in comment.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))

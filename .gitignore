@@ -1,0 +1,7 @@
+*.suo
+*.bak
+*.Cache
+*.config
+obj/
+bin/
+packages/

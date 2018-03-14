@@ -226,7 +226,7 @@ namespace CommentAssembly
             if (line.Trim().StartsWith(AssemblyVersionSignature))
             {
                 writer.WriteLine(string.Format("  TVersion.FVersion := '{0}.{1}'; TVersion.FVersionDebug := {2};", version.Major, version.Minor, version.Revision));
-                writer.WriteLine("// " + version + "  Compiled " + DateTime.Now);
+                writer.WriteLine("// " + version + "  Compiled by [" + App.TheUser + "] " + DateTime.Now);
                 if (comment != null)
                 {
                     foreach (string commentLine in comment.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))

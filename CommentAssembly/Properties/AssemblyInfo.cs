@@ -16,7 +16,7 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // ENDTODO
-// TODO PARAM WinLocation=10;10;900;350
+// TODO PARAM WinLocation=710;456;900;350
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
@@ -52,8 +52,12 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.182")]
-[assembly: AssemblyFileVersion("1.0.0.182")]
+[assembly: AssemblyVersion("1.0.0.184")]
+[assembly: AssemblyFileVersion("1.0.0.184")]
+//// 1.0.0.184  Compiled by [Iovine] 14.03.2018 09:57:30
+//// When ESC is pressed and nothing else happened, then the application exits. (ISSUE#3)
+//// 1.0.0.183  Compiled by [Iovine] 14.03.2018 09:51:02
+//// Support for the user ISSUE#2
 //// 1.0.0.182  Compiled 12.06.2017 16:14:11
 //// Ok now
 //// 1.0.0.181  Compiled 12.06.2017 16:13:41
