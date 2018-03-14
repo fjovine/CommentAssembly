@@ -207,9 +207,9 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (!this.interactionHappened & e.Key == System.Windows.Input.Key.Escape)
+            if (!this.interactionHappened && e.Key == System.Windows.Input.Key.Escape)
             {
-                Environment.Exit(0);
+                this.Close();
             }
 
             this.interactionHappened = true;

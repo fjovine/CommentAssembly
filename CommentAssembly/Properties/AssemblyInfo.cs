@@ -52,8 +52,10 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.184")]
-[assembly: AssemblyFileVersion("1.0.0.184")]
+[assembly: AssemblyVersion("1.0.0.185")]
+[assembly: AssemblyFileVersion("1.0.0.185")]
+//// 1.0.0.185  Compiled by [Iovine] 14.03.2018 10:25:47
+//// - Solving a bug on the Pascal version
 //// 1.0.0.184  Compiled by [Iovine] 14.03.2018 09:57:30
 //// When ESC is pressed and nothing else happened, then the application exits. (ISSUE#3)
 //// 1.0.0.183  Compiled by [Iovine] 14.03.2018 09:51:02

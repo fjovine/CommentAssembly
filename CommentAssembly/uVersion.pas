@@ -36,7 +36,14 @@ begin
 end;
 
 initialization
-  TVersion.FVersion := '0.99'; TVersion.FVersionDebug := 1248;
+  TVersion.FVersion := '0.99'; TVersion.FVersionDebug := 1253;
+// 0.99.0.1253  Compiled by [Iovine] 14.03.2018 13:51:47
+// 0.99.0.1252  Compiled by [Iovine] 14.03.2018 13:51:43
+// 0.99.0.1251  Compiled by [Iovine] 14.03.2018 13:51:39
+// 0.99.0.1250  Compiled by [Iovine] 14.03.2018 13:51:34
+// - When pressing ESC, writes
+// 0.99.0.1249  Compiled by [Iovine] 14.03.2018 10:26:25
+// Seems OK
 // 0.99.0.1248  Compiled by [Iovine] 14.03.2018 09:45:19
 // 0.99.0.1247  Compiled by [Iovine] 14.03.2018 09:44:26
 // 0.99.0.1246  Compiled by [Iovine] 14.03.2018 09:29:02
