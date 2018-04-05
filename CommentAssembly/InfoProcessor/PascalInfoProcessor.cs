@@ -161,8 +161,7 @@ namespace CommentAssembly
                                 }
                             }
 
-                            // in Pascal the thirt version number is 0 and the last one is the debug.
-                            versionString.Append(".0.");
+                            versionString.Append('.');
 
                             for (int i=secondAssignment; i<line.Length; i++)
                             {
@@ -225,7 +224,7 @@ namespace CommentAssembly
         {
             if (line.Trim().StartsWith(AssemblyVersionSignature))
             {
-                writer.WriteLine(string.Format("  TVersion.FVersion := '{0}.{1}'; TVersion.FVersionDebug := {2};", version.Major, version.Minor, version.Revision));
+                writer.WriteLine(string.Format("  TVersion.FVersion := '{0}.{1}.{2}'; TVersion.FVersionDebug := {3};", version.Major, version.Minor, version.Build, version.Revision));
                 writer.WriteLine("// " + version + "  Compiled by [" + App.TheUser + "] " + DateTime.Now);
                 if (comment != null)
                 {

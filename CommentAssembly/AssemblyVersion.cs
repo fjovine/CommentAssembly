@@ -31,10 +31,10 @@ namespace CommentAssembly
             string[] elements = version.Split('.');
             try
             {
-                this.Major = uint.Parse(elements[0]);
-                this.Minor = uint.Parse(elements[1]);
-                this.Build = uint.Parse(elements[2]);
-                this.Revision = uint.Parse(elements[3]);
+                this.Major = elements.Length > 0 ? uint.Parse(elements[0]) : 0;
+                this.Minor = elements.Length > 1 ? uint.Parse(elements[1]) : 0;
+                this.Build = elements.Length > 2 ? uint.Parse(elements[2]) : 0;
+                this.Revision = elements.Length > 3 ? uint.Parse(elements[3]) : 0;
             }
             catch (Exception e)
             {
