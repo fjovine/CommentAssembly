@@ -23,6 +23,7 @@ namespace CommentAssembly
     {
         private static readonly Dictionary<string, Type> Registry = new Dictionary<string, Type>()
         {
+            { "CLANGUAGE", typeof(CLanguageInfoProcessor) },
             { "CSHARP", typeof(CSharpInfoProcessor) },
             { "PASCAL", typeof(PascalInfoProcessor) }
         };

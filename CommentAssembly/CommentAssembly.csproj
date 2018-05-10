@@ -72,6 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="InfoProcessor\AbstractInfoProcessor.cs" />
+    <Compile Include="InfoProcessor\CLanguageInfoProcessor.cs" />
     <Compile Include="InfoProcessor\CSharpInfoProcessor.cs" />
     <Compile Include="InfoProcessor\IInfoProcessor.cs" />
     <Compile Include="InfoProcessor\PascalInfoProcessor.cs" />
@@ -154,8 +155,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>"$(ProjectDir)bin\Debug\CommentAssembly.exe" "$(ProjectDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

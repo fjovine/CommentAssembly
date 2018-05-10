@@ -52,8 +52,13 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.185")]
-[assembly: AssemblyFileVersion("1.0.0.185")]
+[assembly: AssemblyVersion("1.0.0.188")]
+[assembly: AssemblyFileVersion("1.0.0.188")]
+//// 1.0.0.188  Compiled by [Iovine] 5/10/2018 11:44:54 AM
+//// - Added C language support with the command line CLANGUAGE
+//// 1.0.0.187  Compiled by [Iovine] 5/10/2018 11:20:18 AM
+//// 1.0.0.186  Compiled by [Iovine] 5/10/2018 10:23:55 AM
+//// - Adding C language support. 
 //// 1.0.0.185  Compiled by [Iovine] 14.03.2018 10:25:47
 //// - Solving a bug on the Pascal version
 //// 1.0.0.184  Compiled by [Iovine] 14.03.2018 09:57:30

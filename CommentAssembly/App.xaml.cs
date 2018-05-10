@@ -32,14 +32,15 @@ namespace CommentAssembly
         /// <param name="e">The parameter is not used.</param>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            try {
+            try
+            {
                 // Issue#2
                 // In order to differentiate different users or no user a all, in the home folder there must be a file called ".CommentAssembly" that contains only one line
                 // With the username. The username is only the first word (no spaces)
                 string homeDrive = Environment.GetEnvironmentVariable("HOMEDRIVE");
                 string homePath = Environment.GetEnvironmentVariable("HOMEPATH");
 
-                if (string.IsNullOrEmpty(homeDrive) ||string.IsNullOrEmpty(homePath))
+                if (string.IsNullOrEmpty(homeDrive) || string.IsNullOrEmpty(homePath))
                 {
                     // No environment variables, no user hence exit
                     Environment.Exit(0);
@@ -47,7 +48,7 @@ namespace CommentAssembly
 
                 string userNameFile = homeDrive + Path.Combine(homePath, ".CommentAssembly");
 
-                if (! File.Exists(userNameFile))
+                if (!File.Exists(userNameFile))
                 {
                     // No user filename, hence exit.
                     Environment.Exit(0);
@@ -55,14 +56,14 @@ namespace CommentAssembly
 
                 using (StreamReader sr = new StreamReader(userNameFile))
                 {
-                    string userName = String.Empty;
+                    string userName = string.Empty;
                     try
                     {
                         userName = sr.ReadLine().Split(' ')[0];
                     }
                     catch (Exception)
                     {
-                        userName = String.Empty;
+                        userName = string.Empty;
                     }
 
                     if (string.IsNullOrEmpty(userName))
@@ -70,16 +71,18 @@ namespace CommentAssembly
                         // No user name found, exits.
                         Environment.Exit(0);
                     }
+
                     App.TheUser = userName;
                 }
 
-
-                if (! CommentAssembly.MainWindow.ProcessCommandLine())
+                if (!CommentAssembly.MainWindow.ProcessCommandLine())
                 {
                     MessageBox.Show("Error : the project path must be provided on the command line");
                     Environment.Exit(1);
                 }
-            } catch (Exception theException) {
+            }
+            catch (Exception theException)
+            {
                 MessageBox.Show(string.Format("Error : {0} ", theException.Message));
                 Environment.Exit(1);
             }
