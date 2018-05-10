@@ -11,8 +11,8 @@ namespace CommentAssembly
     /// Class to generate an automatic config version for the CLanguage.
     /// It needs a file called version.h tha originally has the following layout
     /// 
-    /// #ifndef VERSION.H
-    /// #define VERSION.H
+    /// #ifndef VERSION_H
+    /// #define VERSION_H
     /// 
     ///   #define CURRENT_VERSION "0.0.1"
     /// 
@@ -23,7 +23,7 @@ namespace CommentAssembly
         /// <summary>
         /// Prefix string of a line that delimitates the to-do start area in the <c>version.h</c> file
         /// </summary>
-        private static readonly string StartOfTodoSignature = "#define VERSION.H";
+        private static readonly string StartOfTodoSignature = "#define VERSION_H";
 
         /// <summary>
         /// Beginning of the line containing the Assembly version in the <c>version.h</c> file.
