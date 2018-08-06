@@ -136,25 +136,28 @@ namespace CommentAssembly
         {
             bool result = false;
             string[] commandLineParameters = Environment.GetCommandLineArgs();
-            Type languageDecoder;
-            if (Registry.TryGetValue(commandLineParameters[1].ToUpperInvariant(), out languageDecoder))
+            if (commandLineParameters.Length > 2)
             {
-                // Format <language> <folder> in this case the number of parameters is 3
-                if (commandLineParameters.Length == 3)
+                Type languageDecoder;
+                if (Registry.TryGetValue(commandLineParameters[1].ToUpperInvariant(), out languageDecoder))
                 {
-                    languageType = commandLineParameters[1].ToUpperInvariant();
-                    ProjectFolder = commandLineParameters[2];
-                    result = true;
+                    // Format <language> <folder> in this case the number of parameters is 3
+                    if (commandLineParameters.Length == 3)
+                    {
+                        languageType = commandLineParameters[1].ToUpperInvariant();
+                        ProjectFolder = commandLineParameters[2];
+                        result = true;
+                    }
                 }
-            }
-            else
-            {
-                // Format <language> <folder> in this case the number of parameters is 2 (defaults to csharp)
-                if (commandLineParameters.Length == 2)
+                else
                 {
-                    ProjectFolder = commandLineParameters[1];
-                    result = true;
-                } 
+                    // Format <language> <folder> in this case the number of parameters is 2 (defaults to csharp)
+                    if (commandLineParameters.Length == 2)
+                    {
+                        ProjectFolder = commandLineParameters[1];
+                        result = true;
+                    }
+                }
             }
 
             return result;

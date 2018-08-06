@@ -15,6 +15,7 @@ namespace CommentAssembly
     /// </summary>
     public partial class App : Application
     {
+        const string ConfigFile = ".CommentAssembly";
         /// <summary>
         /// Gets the user name as found in {home}/.CommentAssembly.
         /// </summary>
@@ -39,19 +40,27 @@ namespace CommentAssembly
                 // With the username. The username is only the first word (no spaces)
                 string homeDrive = Environment.GetEnvironmentVariable("HOMEDRIVE");
                 string homePath = Environment.GetEnvironmentVariable("HOMEPATH");
+                string userProfile = Environment.GetEnvironmentVariable("USERPROFILE");
 
-                if (string.IsNullOrEmpty(homeDrive) || string.IsNullOrEmpty(homePath))
+                if (string.IsNullOrEmpty(userProfile) || string.IsNullOrEmpty(homeDrive) || string.IsNullOrEmpty(homePath))
                 {
                     // No environment variables, no user hence exit
+                    Console.WriteLine("Error : no user profile found");
                     Environment.Exit(0);
                 }
 
-                string userNameFile = homeDrive + Path.Combine(homePath, ".CommentAssembly");
+                string userNameFile = homeDrive + Path.Combine(homePath, ConfigFile);
 
                 if (!File.Exists(userNameFile))
                 {
-                    // No user filename, hence exit.
-                    Environment.Exit(0);
+                    userNameFile = Path.Combine(userProfile, ConfigFile);
+                    if (!File.Exists(userNameFile))
+                    {
+                        Console.WriteLine("HOMEDRIVE [{0}] HOMEPATH [{1}] USERPROFILE [{2}]", homeDrive, homePath, userProfile);
+                        Console.WriteLine("Error : no user profile found");
+                        // No user filename, hence exit.
+                        Environment.Exit(0);
+                    }
                 }
 
                 using (StreamReader sr = new StreamReader(userNameFile))

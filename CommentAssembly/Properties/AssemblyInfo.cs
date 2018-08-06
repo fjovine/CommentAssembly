@@ -16,7 +16,7 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // ENDTODO
-// TODO PARAM WinLocation=710;456;900;350
+// TODO PARAM WinLocation=710;456;1075;450
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
@@ -52,8 +52,18 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.191")]
-[assembly: AssemblyFileVersion("1.0.0.191")]
+[assembly: AssemblyVersion("1.0.0.198")]
+[assembly: AssemblyFileVersion("1.0.0.198")]
+//// 1.0.0.198  Compiled by [Iovine] 06.08.2018 12:54:13
+//// 1.0.0.197  Compiled by [Iovine] 06.08.2018 12:42:44
+//// 1.0.0.196  Compiled by [Iovine] 06.08.2018 12:42:05
+//// 1.0.0.195  Compiled by [Iovine] 06.08.2018 12:39:30
+//// 1.0.0.194  Compiled by [Iovine] 06.08.2018 11:35:34
+//// - Added some debug info
+//// 1.0.0.193  Compiled by [Iovine] 06.08.2018 11:26:19
+//// - Adapted to VisualStudio 2017
+//// 1.0.0.192  Compiled by [Iovine] 06.08.2018 11:19:37
+//// - ISSUE#4
 //// 1.0.0.191  Compiled by [Iovine] 5/10/2018 2:36:51 PM
 //// 1.0.0.190  Compiled by [Iovine] 5/10/2018 2:36:37 PM
 //// - Corrected a bug for the CLANGUAGE version
