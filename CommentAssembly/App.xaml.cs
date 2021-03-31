@@ -45,7 +45,7 @@ namespace CommentAssembly
                 if (string.IsNullOrEmpty(userProfile) || string.IsNullOrEmpty(homeDrive) || string.IsNullOrEmpty(homePath))
                 {
                     // No environment variables, no user hence exit
-                    Console.WriteLine("Error : no user profile found");
+                    Console.WriteLine("Warning : no user profile found");
                     Environment.Exit(0);
                 }
 
@@ -57,7 +57,7 @@ namespace CommentAssembly
                     if (!File.Exists(userNameFile))
                     {
                         Console.WriteLine("HOMEDRIVE [{0}] HOMEPATH [{1}] USERPROFILE [{2}]", homeDrive, homePath, userProfile);
-                        Console.WriteLine("Error : no user profile found");
+                        Console.WriteLine("Warning : no user profile found");
                         // No user filename, hence exit.
                         Environment.Exit(0);
                     }

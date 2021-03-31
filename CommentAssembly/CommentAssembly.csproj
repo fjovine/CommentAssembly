@@ -76,6 +76,7 @@
     <Compile Include="InfoProcessor\CSharpInfoProcessor.cs" />
     <Compile Include="InfoProcessor\IInfoProcessor.cs" />
     <Compile Include="InfoProcessor\PascalInfoProcessor.cs" />
+    <Compile Include="InfoProcessor\RCInfoProcessor.cs" />
     <Compile Include="ITodoList.cs" />
     <Compile Include="ProgramProperty.cs" />
     <Compile Include="PropertiesPanel.xaml.cs">
@@ -155,7 +156,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(ProjectDir)Properties\CommentAssembly.exe" "$(ProjectDir)</PreBuildEvent>
+    <PreBuildEvent>rem "$(ProjectDir)Properties\CommentAssembly.exe" "$(ProjectDir)"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

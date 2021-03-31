@@ -7,7 +7,6 @@
 namespace CommentAssembly
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Windows;
 
@@ -70,7 +69,7 @@ namespace CommentAssembly
 
                 using (TextReader reader = new StreamReader(backupPath))
                 {
-                    using (TextWriter writer = new StreamWriter(filePath))
+                    using (TextWriter writer = new StreamWriter(filePath, false, iinfoProcessor.WriteEncoding))
                     {
                         string line;
                         iinfoProcessor.InitLoading();

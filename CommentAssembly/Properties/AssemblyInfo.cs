@@ -16,7 +16,7 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // ENDTODO
-// TODO PARAM WinLocation=710;456;1075;450
+// TODO PARAM WinLocation=343;616;1075;450
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
@@ -52,8 +52,11 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.198")]
-[assembly: AssemblyFileVersion("1.0.0.198")]
+[assembly: AssemblyVersion("1.0.0.200")]
+[assembly: AssemblyFileVersion("1.0.0.200")]
+//// 1.0.0.200  Compiled by [Iovine] 26.09.2018 11:57:29
+//// 1.0.0.199  Compiled by [Iovine] 26.09.2018 11:56:58
+//// - Adding RC, Windows Resource Compiler language
 //// 1.0.0.198  Compiled by [Iovine] 06.08.2018 12:54:13
 //// 1.0.0.197  Compiled by [Iovine] 06.08.2018 12:42:44
 //// 1.0.0.196  Compiled by [Iovine] 06.08.2018 12:42:05

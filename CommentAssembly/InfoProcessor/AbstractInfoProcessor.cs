@@ -4,6 +4,7 @@ namespace CommentAssembly
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Text;
 
     public abstract class AbstractInfoProcessor : IInfoProcessor
     {
@@ -47,6 +48,7 @@ namespace CommentAssembly
             set;
         }
 
+
         /// <summary>
         /// Gets an enumeration of the last comments.
         /// </summary>
@@ -78,6 +80,8 @@ namespace CommentAssembly
                 throw new NotImplementedException();
             }
         }
+
+        public virtual Encoding WriteEncoding => Encoding.UTF8;
 
         /// <summary>
         /// Must be called before starting loading the LoadAssembly info.

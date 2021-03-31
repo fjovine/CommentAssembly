@@ -25,7 +25,8 @@ namespace CommentAssembly
         {
             { "CLANGUAGE", typeof(CLanguageInfoProcessor) },
             { "CSHARP", typeof(CSharpInfoProcessor) },
-            { "PASCAL", typeof(PascalInfoProcessor) }
+            { "PASCAL", typeof(PascalInfoProcessor) },
+            { "RC", typeof(RCInfoProcessor) }
         };
 
         private static string languageType = "CSHARP";

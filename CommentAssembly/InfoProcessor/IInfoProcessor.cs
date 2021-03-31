@@ -8,6 +8,7 @@ namespace CommentAssembly
 {
     using System.Collections.Generic;
     using System.IO;
+    using System.Text;
 
     /// <summary>
     /// Every source language decoder must implement this interface.
@@ -36,6 +37,11 @@ namespace CommentAssembly
         /// Gets an enumeration of the last comments.
         /// </summary>
         IEnumerable<string> LastComments
+        {
+            get;
+        }
+
+        Encoding WriteEncoding
         {
             get;
         }
