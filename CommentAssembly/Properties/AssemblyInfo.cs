@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -16,7 +16,7 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // ENDTODO
-// TODO PARAM WinLocation=343;616;1075;450
+// TODO PARAM WinLocation=51;1060;1075;450
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
@@ -52,8 +52,17 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.200")]
-[assembly: AssemblyFileVersion("1.0.0.200")]
+[assembly: AssemblyVersion("1.0.0.209")]
+[assembly: AssemblyFileVersion("1.0.0.209")]
+//// 1.0.0.209  Compiled by [Francesco] 31.03.2021 15:09:24
+//// 1.0.0.208  Compiled by [Francesco] 31.03.2021 15:06:21
+//// 1.0.0.207  Compiled by [Francesco] 31.03.2021 15:06:14
+//// 1.0.0.206  Compiled by [Francesco] 31.03.2021 15:05:04
+//// 1.0.0.205  Compiled by [Francesco] 31.03.2021 15:04:54
+//// 1.0.0.204  Compiled by [Francesco] 31.03.2021 15:04:26
+//// 1.0.0.203  Compiled by [Francesco] 31.03.2021 14:55:36
+//// 1.0.0.202  Compiled by [Francesco] 31.03.2021 14:49:15
+//// 1.0.0.201  Compiled by [Francesco] 31.03.2021 14:45:41
 //// 1.0.0.200  Compiled by [Iovine] 26.09.2018 11:57:29
 //// 1.0.0.199  Compiled by [Iovine] 26.09.2018 11:56:58
 //// - Adding RC, Windows Resource Compiler language

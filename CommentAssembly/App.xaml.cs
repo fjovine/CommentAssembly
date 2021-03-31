@@ -49,6 +49,7 @@ namespace CommentAssembly
                     Environment.Exit(0);
                 }
 
+//                MessageBox.Show($"HOMEDRIVE [{homeDrive}] HOMEPATH [{homePath}] USERPROFILE [{userProfile}]");
                 string userNameFile = homeDrive + Path.Combine(homePath, ConfigFile);
 
                 if (!File.Exists(userNameFile))
